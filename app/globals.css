@@ -1,26 +1,197 @@
 @import "tailwindcss";
 
+/*
+ * Design tokens — ported 1:1 from the "House of Sports" Stitch design
+ * (High-Contrast Brutalist system, light theme). Color hex values are
+ * merged from the per-page Stitch exports, which agree almost exactly.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #0027d2;
+  --color-primary-container: #1e3fff;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #d1d4ff;
+  --color-on-primary-fixed-variant: #0027d4;
+
+  --color-background: #f7f7f5;
+  --color-on-background: #0a0a0b;
+  --color-true-black: #0a0a0b;
+
+  --color-surface: #f7f7f5;
+  --color-on-surface: #0a0a0b;
+  --color-on-surface-variant: #444657;
+  --color-surface-variant: #e2e1f0;
+  --color-surface-dim: #dad9e7;
+  --color-surface-bright: #fbf8ff;
+  --color-surface-tint: #2040ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f2ff;
+  --color-surface-container: #eeecfb;
+  --color-surface-container-high: #e8e7f5;
+  --color-surface-container-highest: #e2e1f0;
+
+  --color-outline: #757689;
+  --color-outline-variant: #c5c5da;
+
+  --color-secondary: #5f5e5f;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #e5e2e3;
+  --color-on-secondary-container: #656465;
+
+  --color-tertiary: #891b00;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #b32600;
+  --color-on-tertiary-container: #ffcbbf;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --color-inverse-surface: #2f303b;
+  --color-inverse-on-surface: #f1effe;
+  --color-inverse-primary: #bcc3ff;
+
+  /* Home page's extra pastel accents */
+  --color-brand-mint: #bfffd0;
+  --color-brand-lavender: #e0bfff;
+  --color-brand-coral: #ffbaba;
+  --color-brand-sky: #bfefff;
+
+  /* PastelBadge palette (used on the Careers "perks" pills) */
+  --color-pastel-sky: #d1e8ff;
+  --color-pastel-lavender: #f0d1ff;
+  --color-pastel-mint: #e2f9be;
+  --color-pastel-coral: #ffe5d1;
+  --color-pastel-butter: #d1fff3;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary: var(--color-primary);
+  --color-primary-container: var(--color-primary-container);
+  --color-on-primary: var(--color-on-primary);
+  --color-on-primary-container: var(--color-on-primary-container);
+  --color-on-primary-fixed-variant: var(--color-on-primary-fixed-variant);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--color-background);
+  --color-on-background: var(--color-on-background);
+  --color-true-black: var(--color-true-black);
+
+  --color-surface: var(--color-surface);
+  --color-on-surface: var(--color-on-surface);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --color-surface-variant: var(--color-surface-variant);
+  --color-surface-dim: var(--color-surface-dim);
+  --color-surface-bright: var(--color-surface-bright);
+  --color-surface-tint: var(--color-surface-tint);
+  --color-surface-container-lowest: var(--color-surface-container-lowest);
+  --color-surface-container-low: var(--color-surface-container-low);
+  --color-surface-container: var(--color-surface-container);
+  --color-surface-container-high: var(--color-surface-container-high);
+  --color-surface-container-highest: var(--color-surface-container-highest);
+
+  --color-outline: var(--color-outline);
+  --color-outline-variant: var(--color-outline-variant);
+
+  --color-secondary: var(--color-secondary);
+  --color-on-secondary: var(--color-on-secondary);
+  --color-secondary-container: var(--color-secondary-container);
+  --color-on-secondary-container: var(--color-on-secondary-container);
+
+  --color-tertiary: var(--color-tertiary);
+  --color-on-tertiary: var(--color-on-tertiary);
+  --color-tertiary-container: var(--color-tertiary-container);
+  --color-on-tertiary-container: var(--color-on-tertiary-container);
+
+  --color-error: var(--color-error);
+  --color-on-error: var(--color-on-error);
+  --color-error-container: var(--color-error-container);
+  --color-on-error-container: var(--color-on-error-container);
+
+  --color-inverse-surface: var(--color-inverse-surface);
+  --color-inverse-on-surface: var(--color-inverse-on-surface);
+  --color-inverse-primary: var(--color-inverse-primary);
+
+  --color-brand-mint: var(--color-brand-mint);
+  --color-brand-lavender: var(--color-brand-lavender);
+  --color-brand-coral: var(--color-brand-coral);
+  --color-brand-sky: var(--color-brand-sky);
+
+  --color-pastel-sky: var(--color-pastel-sky);
+  --color-pastel-lavender: var(--color-pastel-lavender);
+  --color-pastel-mint: var(--color-pastel-mint);
+  --color-pastel-coral: var(--color-pastel-coral);
+  --color-pastel-butter: var(--color-pastel-butter);
+
+  /* Fonts: Anton (display/headline), Inter (default body), JetBrains Mono (labels).
+     Hanken Grotesk is applied per-page via the .font-hanken utility below,
+     matching the About/Socials screens in the source design. */
+  --font-display: var(--font-anton);
+  --font-mono-label: var(--font-jetbrains-mono);
+  --font-hanken: var(--font-hanken-grotesk);
+
+  /* Shared type scale — matches the Home/Careers/Contact/History screens */
+  --text-display-xl: 72px;
+  --text-display-xl--line-height: 64px;
+  --text-display-xl--letter-spacing: -0.04em;
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 44px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg-mobile: 36px;
+  --text-headline-lg-mobile--line-height: 32px;
+  --text-headline-lg-mobile--letter-spacing: -0.02em;
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 28px;
+  --text-headline-md--letter-spacing: 0.01em;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--letter-spacing: -0.01em;
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-label-mono: 12px;
+  --text-label-mono--line-height: 16px;
+  --text-label-mono--letter-spacing: 0.05em;
+  --text-stat-number: 40px;
+  --text-stat-number--line-height: 40px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-hanken {
+  font-family: var(--font-hanken-grotesk), sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.court-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(0, 39, 210, 0.05) 10px,
+    rgba(0, 39, 210, 0.05) 12px
+  );
+}
+
+@keyframes move-line {
+  0% {
+    left: -33%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+.animate-move-line {
+  animation: move-line 3s linear infinite;
+}
+
+/* visible focus ring for keyboard navigation (accessibility) */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }

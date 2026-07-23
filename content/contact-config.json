@@ -1,0 +1,8 @@
+{
+  "contacts": [
+    { "role": "General Manager", "name": "Aryan \"Ace\" Sharma", "email": "gm@houseofsports.in" },
+    { "role": "Lead Recruiter", "name": "Sana Malik", "email": "squad@houseofsports.in" }
+  ],
+  "address": "Block 4, Ore-Zone Complex, Delhi 110001",
+  "hours": "Open 24/7 for the grind"
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "lead-fullstack-architect",
+    "title": "Lead Full-Stack Architect",
+    "department": "Engineering",
+    "type": "Full-time",
+    "location": "Delhi / Remote",
+    "compRange": "₹35L - 55L",
+    "description": "We're looking for a high-performance engineer to lead the development of our real-time court booking and community engine. You'll be managing complex state, high-concurrency websocket connections, and a brutalist design implementation.",
+    "requirements": [
+      "6+ Years in Next.js / Node.js Ecosystem",
+      "Experience with real-time data sync",
+      "Passion for local street sports culture"
+    ]
+  },
+  {
+    "slug": "senior-uiux-designer",
+    "title": "Senior UI/UX Designer (Streetwear Focus)",
+    "department": "Product Design",
+    "type": "Full-time",
+    "location": "Delhi Hub",
+    "compRange": "₹28L - 42L",
+    "description": "Translate the grit of the court into pixels. We need a designer who understands Neo-Brutalism and can create high-contrast, functional interfaces for athletes on the move.",
+    "requirements": [
+      "Portfolio demonstrating high-contrast aesthetics",
+      "Advanced knowledge of Figma/Auto-layout",
+      "Deep understanding of typography systems"
+    ]
+  },
+  {
+    "slug": "head-of-community-events",
+    "title": "Head of Community & Events",
+    "department": "Marketing",
+    "type": "Full-time",
+    "location": "Hybrid",
+    "compRange": "₹22L - 35L",
+    "description": "Your job is the street. Organize tournaments, manage local ambassadors, and ensure \"House of Sports\" is the name on every athlete's tongue from Lajpat Nagar to Rohini.",
+    "requirements": [
+      "Proven track record in event management",
+      "Strong local network in Delhi sports scene",
+      "Obsessive attention to brand detail"
+    ]
+  }
+]

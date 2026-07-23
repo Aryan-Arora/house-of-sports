@@ -1,0 +1,49 @@
+{
+  "handle": "@houseofsports_in",
+  "hashtag": "#HOSDELHI",
+  "links": [
+    { "platform": "Instagram", "url": "https://instagram.com/houseofsports_in", "icon": "camera" },
+    { "platform": "Discord", "url": "https://discord.gg/houseofsports", "icon": "forum" },
+    { "platform": "Twitter", "url": "https://twitter.com/houseofsports_in", "icon": "chat" }
+  ],
+  "stat": { "label": "Engagements this week", "value": "1.2M+" },
+  "posts": [
+    {
+      "id": "post-1",
+      "handle": "@vikram_hoops",
+      "meta": "Sector 5 Courts • 2h ago",
+      "caption": "Raining buckets under the neon.",
+      "image": "/images/socials/post-1.jpg",
+      "avatar": "/images/socials/avatar-1.jpg",
+      "size": "featured"
+    },
+    {
+      "id": "post-2",
+      "handle": "reel",
+      "caption": "Skaters performing a trick",
+      "image": "/images/socials/post-2.jpg",
+      "size": "video"
+    },
+    {
+      "id": "post-3",
+      "handle": "@kicks_king",
+      "caption": "Close-up of basketball sneakers",
+      "image": "/images/socials/post-3.jpg",
+      "size": "normal"
+    },
+    {
+      "id": "post-4",
+      "handle": "@night_football",
+      "caption": "Night football match",
+      "image": "/images/socials/post-4.jpg",
+      "size": "normal"
+    },
+    {
+      "id": "post-5",
+      "handle": "@train_hard",
+      "caption": "Female athlete training",
+      "image": "/images/socials/post-5.jpg",
+      "size": "normal"
+    }
+  ]
+}

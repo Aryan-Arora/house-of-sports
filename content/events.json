@@ -1,0 +1,99 @@
+[
+  {
+    "slug": "slip-and-slide-floor5-edition-1",
+    "title": "Foam & Chaos",
+    "tag": "SLIP & SLIDE / EDITION 1",
+    "date": "2023-07-08",
+    "category": "slip-and-slide",
+    "sport": "Slip & Slide",
+    "description": "The one that started it all — House of Sports teamed up with Floor 5 to turn a Delhi rooftop into a foam-soaked slip-and-slide arena for our first-ever community meetup.",
+    "coverImage": "/images/events/slip-and-slide-1/cover.jpg",
+    "size": "tall",
+    "gallery": [
+      "/images/events/slip-and-slide-1/gallery-1.jpg",
+      "/images/events/slip-and-slide-1/gallery-2.jpg",
+      "/images/events/slip-and-slide-1/gallery-3.jpg"
+    ]
+  },
+  {
+    "slug": "smash-series-vol-1",
+    "title": "First Serve",
+    "tag": "BADMINTON / SMASH SERIES VOL. 1",
+    "date": "2023-11-12",
+    "category": "badminton",
+    "sport": "Badminton",
+    "description": "Our first badminton tournament — a weekend knockout bracket that brought 60+ members onto the court across singles and doubles draws.",
+    "coverImage": "/images/events/badminton-1/cover.jpg",
+    "size": "normal",
+    "gallery": [
+      "/images/events/badminton-1/gallery-1.jpg",
+      "/images/events/badminton-1/gallery-2.jpg",
+      "/images/events/badminton-1/gallery-3.jpg"
+    ]
+  },
+  {
+    "slug": "mini-fifa-world-cup",
+    "title": "Golden Goal",
+    "tag": "FOOTBALL / MINI WORLD CUP",
+    "date": "2024-06-22",
+    "category": "football",
+    "sport": "Football",
+    "description": "16 five-a-side teams, group stages through to a knockout final — our take on a World Cup, condensed into one high-energy weekend.",
+    "coverImage": "/images/events/fifa-world-cup/cover.jpg",
+    "size": "short",
+    "gallery": [
+      "/images/events/fifa-world-cup/gallery-1.jpg",
+      "/images/events/fifa-world-cup/gallery-2.jpg",
+      "/images/events/fifa-world-cup/gallery-3.jpg",
+      "/images/events/fifa-world-cup/gallery-4.jpg"
+    ]
+  },
+  {
+    "slug": "slip-and-slide-floor5-edition-2",
+    "title": "Velocity Unleashed",
+    "tag": "SLIP & SLIDE / EDITION 2",
+    "date": "2024-08-03",
+    "category": "slip-and-slide",
+    "sport": "Slip & Slide",
+    "description": "Back by popular demand and twice the size — Edition 2 added a DJ set, relay races, and a bigger slide for our growing community.",
+    "coverImage": "/images/events/slip-and-slide-2/cover.jpg",
+    "size": "diagonal",
+    "gallery": [
+      "/images/events/slip-and-slide-2/gallery-1.jpg",
+      "/images/events/slip-and-slide-2/gallery-2.jpg",
+      "/images/events/slip-and-slide-2/gallery-3.jpg"
+    ]
+  },
+  {
+    "slug": "smash-series-vol-2",
+    "title": "Match Point",
+    "tag": "BADMINTON / SMASH SERIES VOL. 2",
+    "date": "2024-09-14",
+    "category": "badminton",
+    "sport": "Badminton",
+    "description": "A bigger draw, a livelier crowd, and a mixed-doubles category added by popular request — our second badminton tournament raised the bar.",
+    "coverImage": "/images/events/badminton-2/cover.jpg",
+    "size": "tall",
+    "gallery": [
+      "/images/events/badminton-2/gallery-1.jpg",
+      "/images/events/badminton-2/gallery-2.jpg",
+      "/images/events/badminton-2/gallery-3.jpg"
+    ]
+  },
+  {
+    "slug": "slip-and-slide-floor5-edition-3",
+    "title": "The Big Splash",
+    "tag": "SLIP & SLIDE / EDITION 3",
+    "date": "2025-08-09",
+    "category": "slip-and-slide",
+    "sport": "Slip & Slide",
+    "description": "The third and biggest edition yet, with a full day of foam, music, and games for a community that's grown far past where we started.",
+    "coverImage": "/images/events/slip-and-slide-3/cover.jpg",
+    "size": "normal",
+    "gallery": [
+      "/images/events/slip-and-slide-3/gallery-1.jpg",
+      "/images/events/slip-and-slide-3/gallery-2.jpg",
+      "/images/events/slip-and-slide-3/gallery-3.jpg"
+    ]
+  }
+]

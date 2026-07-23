@@ -1,0 +1,6 @@
+[
+  { "id": "members", "label": "Members", "value": 1000, "suffix": "+" },
+  { "id": "years-strong", "label": "Years Strong", "value": 3, "prefix": "0", "suffix": "" },
+  { "id": "venues", "label": "Venues", "value": 50, "suffix": "+" },
+  { "id": "access", "label": "Access", "display": "24/7" }
+]

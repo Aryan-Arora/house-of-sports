@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "vedant-gupta",
+    "name": "Vedant Gupta",
+    "jersey": "01",
+    "role": "Chief Catalyst / Founder",
+    "bio": "The visionary architect who turned a park-side dream into a multi-city movement.",
+    "icon": "tactic",
+    "photo": "/images/founders/vedant-gupta.jpg"
+  },
+  {
+    "slug": "sujal-sethi",
+    "name": "Sujal Sethi",
+    "jersey": "07",
+    "role": "Ops Commander / Co-Founder",
+    "bio": "The engine room of House of Sports, ensuring every court is ready for the heat.",
+    "icon": "settings_input_component",
+    "photo": "/images/founders/sujal-sethi.jpg"
+  },
+  {
+    "slug": "muskaan-sethi",
+    "name": "Muskaan Sethi",
+    "jersey": "11",
+    "role": "Culture Lead / Co-Founder",
+    "bio": "The pulse of our community, bridging the gap between the game and the culture.",
+    "icon": "campaign",
+    "photo": "/images/founders/muskaan-sethi.jpg"
+  }
+]
