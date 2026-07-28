@@ -110,20 +110,33 @@ const SECTIONS: SectionContent[] = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-paper-muted">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8 md:py-28">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+      {/* Hero — full-bleed looping video, headline pinned via scroll */}
+      <section className="relative h-[160vh]">
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          {/* TODO: drop the real video file in as public/videos/hero.mp4 — poster shows until then */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/images/hero/home-hero.jpg"
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src="/videos/hero.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-ink/10" />
+
+          <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col justify-end px-5 pb-20 md:px-8">
+            <p className="text-sm font-semibold uppercase tracking-wide text-paper/80">
               Join the Movement
             </p>
-            <h1 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 max-w-2xl text-4xl font-extrabold leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
               Your everyday sports &amp; fitness destination
             </h1>
-            <p className="mt-6 max-w-lg text-lg text-ink/70">
+            <p className="mt-6 max-w-lg text-lg text-paper/80">
               <SportCycler
                 words={["Football", "Cricket", "Runs", "Yoga"]}
-                className="font-semibold text-primary"
+                className="font-semibold text-paper"
               />{" "}
               — coaching, events, and community, all in one place.
             </p>
@@ -137,22 +150,11 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/social-gallery"
-                className="inline-flex items-center gap-2 rounded-full border border-line px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-ink/30"
+                className="inline-flex items-center gap-2 rounded-full border border-paper/40 bg-paper/10 px-7 py-3.5 text-sm font-semibold text-paper backdrop-blur transition hover:bg-paper/20"
               >
                 See our story
               </Link>
             </div>
-          </div>
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-paper md:aspect-square">
-            <Image
-              src="/images/hero/home-hero.jpg"
-              alt="House of Sports members playing football"
-              fill
-              priority
-              sizes="(min-width: 768px) 45vw, 100vw"
-              className="object-cover"
-              placeholder="empty"
-            />
           </div>
         </div>
       </section>
