@@ -2,28 +2,22 @@
   {
     "slug": "vedant-gupta",
     "name": "Vedant Gupta",
-    "jersey": "01",
-    "role": "Chief Catalyst / Founder",
-    "bio": "The visionary architect who turned a park-side dream into a multi-city movement.",
-    "icon": "tactic",
+    "role": "Co-Founder",
+    "bio": "Started House of Sports with a single football pickup game — now leads partnerships and the push to get HOS Arena built and running.",
     "photo": "/images/founders/vedant-gupta.jpg"
   },
   {
     "slug": "sujal-sethi",
     "name": "Sujal Sethi",
-    "jersey": "07",
-    "role": "Ops Commander / Co-Founder",
-    "bio": "The engine room of House of Sports, ensuring every court is ready for the heat.",
-    "icon": "settings_input_component",
+    "role": "Co-Founder, Operations",
+    "bio": "Keeps coaching, events, and everyday bookings running on time — the reason things actually happen when they're supposed to.",
     "photo": "/images/founders/sujal-sethi.jpg"
   },
   {
     "slug": "muskaan-sethi",
     "name": "Muskaan Sethi",
-    "jersey": "11",
-    "role": "Culture Lead / Co-Founder",
-    "bio": "The pulse of our community, bridging the gap between the game and the culture.",
-    "icon": "campaign",
+    "role": "Co-Founder, Community",
+    "bio": "Builds the community side of House of Sports — from the women's football program to everything you see on Social Gallery.",
     "photo": "/images/founders/muskaan-sethi.jpg"
   }
 ]

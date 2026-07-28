@@ -4,14 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { clsx } from "clsx";
+import { MenuIcon, CloseIcon } from "@/components/icons";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/careers", label: "Careers" },
-  { href: "/contact", label: "Contact" },
-  { href: "/history", label: "Gallery" },
-  { href: "/socials", label: "Socials" },
+  { href: "/partner-with-us", label: "Partner With Us" },
+  { href: "/join-the-team", label: "Join the Team" },
+  { href: "/social-gallery", label: "Social Gallery" },
 ];
 
 export default function Navbar() {
@@ -19,18 +18,18 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b-4 border-primary bg-background">
-      <div className="flex w-full max-w-none items-center justify-between px-4 py-4 md:px-10">
+    <header className="sticky top-0 z-50 w-full border-b border-line bg-paper/95 backdrop-blur">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
         <Link
           href="/"
-          className="font-display text-headline-md uppercase tracking-tighter text-primary"
+          className="text-lg font-extrabold tracking-tight text-ink"
           onClick={() => setIsOpen(false)}
         >
-          HOUSE OF SPORTS
+          House of Sports
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => {
+          {NAV_LINKS.slice(1).map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
@@ -38,10 +37,8 @@ export default function Navbar() {
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 className={clsx(
-                  "font-display text-headline-md uppercase transition-colors",
-                  isActive
-                    ? "border-b-2 border-primary pb-1 text-primary"
-                    : "text-on-surface hover:text-primary"
+                  "text-sm font-medium transition-colors",
+                  isActive ? "text-primary" : "text-ink/70 hover:text-ink"
                 )}
               >
                 {link.label}
@@ -51,28 +48,26 @@ export default function Navbar() {
         </nav>
 
         <Link
-          href="/contact"
-          className="hidden bg-primary px-6 py-2 font-display text-headline-md uppercase text-on-primary transition-transform duration-200 active:skew-x-12 md:inline-block"
+          href="/partner-with-us"
+          className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-paper transition hover:opacity-90 md:inline-block"
         >
-          Join the squad
+          Join the Movement
         </Link>
 
-        {/* mobile toggle */}
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center border-2 border-on-background md:hidden"
+          className="flex h-10 w-10 items-center justify-center text-ink md:hidden"
           aria-expanded={isOpen}
           aria-label={isOpen ? "Close menu" : "Open menu"}
           onClick={() => setIsOpen((prev) => !prev)}
         >
-          <span className="material-symbols-outlined">{isOpen ? "close" : "menu"}</span>
+          {isOpen ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* mobile nav */}
       {isOpen ? (
-        <nav className="border-t-2 border-outline-variant bg-background md:hidden">
-          {NAV_LINKS.map((link) => {
+        <nav className="border-t border-line bg-paper md:hidden">
+          {NAV_LINKS.slice(1).map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
@@ -80,8 +75,8 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={clsx(
-                  "block border-b border-outline-variant px-4 py-3 font-display text-headline-md uppercase",
-                  isActive ? "text-primary" : "text-on-background"
+                  "block border-b border-line px-5 py-3.5 text-sm font-medium",
+                  isActive ? "text-primary" : "text-ink"
                 )}
               >
                 {link.label}
@@ -89,11 +84,11 @@ export default function Navbar() {
             );
           })}
           <Link
-            href="/contact"
+            href="/partner-with-us"
             onClick={() => setIsOpen(false)}
-            className="block bg-primary px-4 py-4 text-center font-display text-headline-md uppercase text-on-primary"
+            className="block bg-primary px-5 py-4 text-center text-sm font-semibold text-paper"
           >
-            Join the squad
+            Join the Movement
           </Link>
         </nav>
       ) : null}

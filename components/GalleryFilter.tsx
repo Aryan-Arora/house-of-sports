@@ -11,10 +11,12 @@ interface GalleryFilterProps {
 }
 
 const FILTERS: { label: string; value: EventCategory | "all" }[] = [
-  { label: "All Access", value: "all" },
-  { label: "Badminton", value: "badminton" },
+  { label: "All", value: "all" },
   { label: "Football", value: "football" },
-  { label: "Slip & Slide", value: "slip-and-slide" },
+  { label: "Cricket", value: "cricket" },
+  { label: "Runs", value: "runs" },
+  { label: "Yoga", value: "yoga" },
+  { label: "Community", value: "community" },
 ];
 
 const SIZE_ROW_SPAN: Record<SiteEvent["size"], string> = {
@@ -31,40 +33,33 @@ export default function GalleryFilter({ events }: GalleryFilterProps) {
 
   return (
     <>
-      <section className="mb-16 flex flex-wrap items-center gap-3">
-        <span className="mr-4 font-mono-label text-label-mono uppercase text-on-background opacity-60">
-          Filter by Arena:
-        </span>
+      <div className="flex flex-wrap gap-2">
         {FILTERS.map((filter) => (
           <button
             key={filter.value}
             type="button"
             onClick={() => setActive(filter.value)}
             className={clsx(
-              "rounded-full border-2 px-4 py-2 font-mono-label text-label-mono uppercase transition-all",
+              "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
               active === filter.value
-                ? "border-primary bg-primary text-on-primary"
-                : "border-outline-variant bg-surface text-on-surface hover:border-primary hover:text-primary"
+                ? "border-primary bg-primary text-paper"
+                : "border-line text-ink/70 hover:border-ink/30 hover:text-ink"
             )}
           >
             {filter.label}
           </button>
         ))}
-      </section>
+      </div>
 
-      <GalleryGrid>
-        {filtered.map((event) => (
-          <div
-            key={event.slug}
-            className={clsx(
-              SIZE_ROW_SPAN[event.size],
-              event.size === "diagonal" && "[clip-path:polygon(0_0,100%_0,100%_90%,92%_100%,0_100%)]"
-            )}
-          >
-            <EventCard event={event} />
-          </div>
-        ))}
-      </GalleryGrid>
+      <div className="mt-8">
+        <GalleryGrid>
+          {filtered.map((event) => (
+            <div key={event.slug} className={SIZE_ROW_SPAN[event.size]}>
+              <EventCard event={event} />
+            </div>
+          ))}
+        </GalleryGrid>
+      </div>
     </>
   );
 }

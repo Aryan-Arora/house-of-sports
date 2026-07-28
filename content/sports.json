@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "football",
+    "name": "Football",
+    "description": "5-a-side leagues, pickup games, and a growing women's football program — every level, every week."
+  },
+  {
+    "slug": "cricket",
+    "name": "Cricket",
+    "description": "Nets, weekend turf matches, and a running league for players who never grew out of it."
+  },
+  {
+    "slug": "runs",
+    "name": "Runs",
+    "description": "Community run club — city routes at every pace, with people who'll actually show up at 6am."
+  },
+  {
+    "slug": "yoga",
+    "name": "Yoga",
+    "description": "Morning and evening sessions to keep the rest of your week from falling apart."
+  }
+]

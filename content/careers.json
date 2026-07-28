@@ -1,44 +1,44 @@
 [
   {
-    "slug": "lead-fullstack-architect",
-    "title": "Lead Full-Stack Architect",
+    "slug": "head-coach-womens-football",
+    "title": "Head Coach — Women's Football",
+    "department": "Coaching",
+    "type": "Full-time",
+    "location": "HOS Arena, Delhi",
+    "compRange": "₹6L - 9L",
+    "description": "Lead our women's football program from the ground up — running sessions, building a proper training structure, and growing the squad as we move more of it onto HOS Arena.",
+    "requirements": [
+      "AIFF C-license or equivalent coaching certification",
+      "Experience coaching youth or women's teams",
+      "Comfortable running sessions solo and building a curriculum from scratch"
+    ]
+  },
+  {
+    "slug": "community-events-manager",
+    "title": "Community & Events Manager",
+    "department": "Community",
+    "type": "Full-time",
+    "location": "Delhi",
+    "compRange": "₹5L - 8L",
+    "description": "Own the calendar — tournaments, community runs, yoga sessions, and everything happening at HOS Arena. You're the reason members always know what's next.",
+    "requirements": [
+      "2+ years running events or community programs",
+      "Strong local network in Delhi's sports and fitness scene",
+      "Genuinely enjoys being at every event, not just organizing it"
+    ]
+  },
+  {
+    "slug": "fullstack-developer",
+    "title": "Full-Stack Developer",
     "department": "Engineering",
     "type": "Full-time",
     "location": "Delhi / Remote",
-    "compRange": "₹35L - 55L",
-    "description": "We're looking for a high-performance engineer to lead the development of our real-time court booking and community engine. You'll be managing complex state, high-concurrency websocket connections, and a brutalist design implementation.",
+    "compRange": "₹12L - 18L",
+    "description": "Build and maintain the booking, coaching, and community tools that keep House of Sports running — including everything tied to HOS Arena's day-to-day operations.",
     "requirements": [
-      "6+ Years in Next.js / Node.js Ecosystem",
-      "Experience with real-time data sync",
-      "Passion for local street sports culture"
-    ]
-  },
-  {
-    "slug": "senior-uiux-designer",
-    "title": "Senior UI/UX Designer (Streetwear Focus)",
-    "department": "Product Design",
-    "type": "Full-time",
-    "location": "Delhi Hub",
-    "compRange": "₹28L - 42L",
-    "description": "Translate the grit of the court into pixels. We need a designer who understands Neo-Brutalism and can create high-contrast, functional interfaces for athletes on the move.",
-    "requirements": [
-      "Portfolio demonstrating high-contrast aesthetics",
-      "Advanced knowledge of Figma/Auto-layout",
-      "Deep understanding of typography systems"
-    ]
-  },
-  {
-    "slug": "head-of-community-events",
-    "title": "Head of Community & Events",
-    "department": "Marketing",
-    "type": "Full-time",
-    "location": "Hybrid",
-    "compRange": "₹22L - 35L",
-    "description": "Your job is the street. Organize tournaments, manage local ambassadors, and ensure \"House of Sports\" is the name on every athlete's tongue from Lajpat Nagar to Rohini.",
-    "requirements": [
-      "Proven track record in event management",
-      "Strong local network in Delhi sports scene",
-      "Obsessive attention to brand detail"
+      "3+ Years in Next.js / Node.js",
+      "Comfortable owning a feature end to end, from database to UI",
+      "Bonus: you actually play one of our four sports"
     ]
   }
 ]

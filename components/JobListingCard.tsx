@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { clsx } from "clsx";
+import { ChevronDownIcon } from "@/components/icons";
 import type { CareerRole } from "@/lib/types";
 
 interface JobListingCardProps {
@@ -15,72 +15,59 @@ export default function JobListingCard({ role }: JobListingCardProps) {
   return (
     <div
       className={clsx(
-        "group overflow-hidden border-2 bg-surface-container-lowest transition-colors",
-        isOpen ? "border-primary" : "border-outline-variant hover:border-primary"
+        "overflow-hidden rounded-2xl border transition-colors",
+        isOpen ? "border-primary" : "border-line hover:border-ink/20"
       )}
     >
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
-        className="flex w-full flex-col justify-between gap-6 px-8 py-8 text-left md:flex-row md:items-center"
+        className="flex w-full flex-col justify-between gap-4 px-6 py-6 text-left sm:flex-row sm:items-center"
       >
         <div className="flex-1">
-          <div className="mb-2 flex items-center gap-4">
-            <span className="border border-primary/20 bg-primary/10 px-2 py-0.5 font-mono-label text-[10px] tracking-widest text-primary">
-              {role.department.toUpperCase()}
+          <div className="mb-2 flex flex-wrap items-center gap-3">
+            <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+              {role.department}
             </span>
-            <span className="font-mono-label text-[10px] tracking-widest text-on-surface-variant">
-              {role.location.toUpperCase()}
-            </span>
+            <span className="text-xs text-ink/50">{role.location}</span>
           </div>
-          <h3 className="font-display text-headline-md uppercase text-on-surface">
-            {role.title}
-          </h3>
+          <h3 className="text-lg font-bold text-ink">{role.title}</h3>
         </div>
-        <div className="flex items-center gap-8">
-          <div className="hidden md:block">
-            <span className="block font-mono-label text-label-mono uppercase text-on-surface-variant">
-              Comp range
-            </span>
-            <span className="font-display text-[24px] text-on-surface">{role.compRange}</span>
+        <div className="flex items-center gap-6">
+          <div className="hidden text-right sm:block">
+            <span className="block text-xs text-ink/50">Comp range</span>
+            <span className="text-sm font-semibold text-ink">{role.compRange}</span>
           </div>
-          <span
-            className={clsx(
-              "material-symbols-outlined text-4xl text-on-surface transition-transform",
-              isOpen && "rotate-180"
-            )}
-          >
-            expand_more
-          </span>
+          <ChevronDownIcon
+            className={clsx("h-5 w-5 text-ink/50 transition-transform", isOpen && "rotate-180")}
+          />
         </div>
       </button>
 
       {isOpen ? (
-        <div className="border-t border-outline-variant px-8 pb-8 pt-6">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+        <div className="border-t border-line px-6 pb-6 pt-5">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
-              <p className="mb-6 text-on-surface-variant">{role.description}</p>
-              <h4 className="mb-4 font-mono-label text-label-mono uppercase text-primary">
-                Requirements
+              <p className="mb-4 text-sm text-ink/70">{role.description}</p>
+              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink/40">
+                What we&rsquo;re looking for
               </h4>
-              <ul className="space-y-2 text-on-surface">
+              <ul className="space-y-1.5 text-sm text-ink/80">
                 {role.requirements.map((requirement) => (
                   <li key={requirement} className="flex items-start gap-2">
-                    <span className="text-primary">/</span> {requirement}
+                    <span className="mt-0.5 text-primary">•</span> {requirement}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="flex flex-col justify-end">
-              <Link
-                href={`/contact?subject=${encodeURIComponent(
-                  `Application: ${role.title}`
-                )}&type=application`}
-                className="w-full bg-primary py-4 text-center font-display uppercase text-on-primary transition-transform hover:scale-[1.02]"
+              <a
+                href="#apply"
+                className="rounded-full bg-primary py-3 text-center text-sm font-semibold text-paper transition hover:opacity-90"
               >
-                Apply for this slot
-              </Link>
+                Apply for this role
+              </a>
             </div>
           </div>
         </div>

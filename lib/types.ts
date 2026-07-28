@@ -1,11 +1,11 @@
-export type EventCategory = "badminton" | "football" | "slip-and-slide";
+export type EventCategory = "football" | "cricket" | "runs" | "yoga" | "community";
 export type GalleryItemSize = "tall" | "normal" | "short" | "diagonal";
 
 export interface SiteEvent {
   slug: string;
   title: string;
   tag: string;
-  date: string; // ISO date, e.g. "2024-03-16"
+  date: string; // ISO date
   category: EventCategory;
   sport: string;
   description: string;
@@ -17,11 +17,23 @@ export interface SiteEvent {
 export interface Founder {
   slug: string;
   name: string;
-  jersey: string;
   role: string;
   bio: string;
-  icon: string;
   photo: string;
+}
+
+export interface Sport {
+  slug: string;
+  name: string;
+  description: string;
+}
+
+export interface Arena {
+  name: string;
+  partner: string;
+  tagline: string;
+  description: string;
+  image: string;
 }
 
 export type CareerType = "Full-time" | "Part-time" | "Volunteer" | "Internship";
@@ -64,14 +76,10 @@ export interface SocialPost {
   size: SocialPostSize;
 }
 
-export interface ContactPerson {
-  role: string;
-  name: string;
-  email: string;
-}
-
 export interface ContactConfig {
-  contacts: ContactPerson[];
-  address: string;
+  email: string;
+  phone: string;
+  arenaName: string;
+  arenaAddress: string;
   hours: string;
 }

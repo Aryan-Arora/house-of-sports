@@ -8,7 +8,7 @@ interface CareerApplicationFormProps {
 }
 
 const inputClass =
-  "w-full border-0 border-b-2 border-outline-variant bg-background py-4 uppercase text-on-surface focus:border-primary focus:outline-none focus:ring-0";
+  "mt-1.5 w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-primary";
 
 export default function CareerApplicationForm({ roles }: CareerApplicationFormProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -32,9 +32,9 @@ export default function CareerApplicationForm({ roles }: CareerApplicationFormPr
           message: [
             `Role of interest: ${form.get("role") ?? "N/A"}`,
             `Portfolio/LinkedIn: ${form.get("portfolio") ?? "N/A"}`,
-            `Stats: ${form.get("stats") ?? "N/A"}`,
+            `Experience: ${form.get("experience") ?? "N/A"}`,
           ].join("\n"),
-          subject: "General application",
+          subject: "Job application",
           type: "application",
         }),
       });
@@ -48,67 +48,53 @@ export default function CareerApplicationForm({ roles }: CareerApplicationFormPr
 
   if (status === "success") {
     return (
-      <div role="status" className="border-2 border-primary bg-primary/10 p-8 text-center">
-        <p className="font-display text-headline-md uppercase text-primary">Application received</p>
-        <p className="mt-2 text-on-surface-variant">We review all applications within 48 hours.</p>
+      <div role="status" className="rounded-2xl border border-line bg-paper-muted p-8 text-center">
+        <p className="text-lg font-bold text-ink">Application received</p>
+        <p className="mt-1 text-sm text-ink/60">We review every application within a few days.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div className="space-y-2">
-          <label htmlFor="app-name" className="font-mono-label text-label-mono uppercase text-primary">
-            Full Name
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="app-name" className="text-sm font-medium text-ink">
+            Full name
           </label>
-          <input id="app-name" name="name" type="text" required placeholder="YOUR NAME" className={inputClass} />
+          <input id="app-name" name="name" type="text" required className={inputClass} />
         </div>
-        <div className="space-y-2">
-          <label htmlFor="app-email" className="font-mono-label text-label-mono uppercase text-primary">
-            Email Address
+        <div>
+          <label htmlFor="app-email" className="text-sm font-medium text-ink">
+            Email
           </label>
-          <input
-            id="app-email"
-            name="email"
-            type="email"
-            required
-            placeholder="YOUR@EMAIL.COM"
-            className={inputClass}
-          />
+          <input id="app-email" name="email" type="email" required className={inputClass} />
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div className="space-y-2">
-          <label htmlFor="app-role" className="font-mono-label text-label-mono uppercase text-primary">
-            Role of Interest
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="app-role" className="text-sm font-medium text-ink">
+            Role you&rsquo;re applying for
           </label>
           <select id="app-role" name="role" className={`${inputClass} appearance-none`}>
-            <option>SELECT ROLE</option>
             {roles.map((role) => (
-              <option key={role.slug}>{role.title.toUpperCase()}</option>
+              <option key={role.slug}>{role.title}</option>
             ))}
-            <option>OTHER / GENERAL</option>
+            <option>Other / General</option>
           </select>
         </div>
-        <div className="space-y-2">
-          <label htmlFor="app-portfolio" className="font-mono-label text-label-mono uppercase text-primary">
+        <div>
+          <label htmlFor="app-portfolio" className="text-sm font-medium text-ink">
             Portfolio / LinkedIn
           </label>
-          <input id="app-portfolio" name="portfolio" type="url" placeholder="HTTPS://..." className={inputClass} />
+          <input id="app-portfolio" name="portfolio" type="url" placeholder="https://" className={inputClass} />
         </div>
       </div>
-      <div className="space-y-2">
-        <label htmlFor="app-stats" className="font-mono-label text-label-mono uppercase text-primary">
-          Tell Us Your Stats (Experience)
+      <div>
+        <label htmlFor="app-experience" className="text-sm font-medium text-ink">
+          Tell us about your experience
         </label>
-        <textarea
-          id="app-stats"
-          name="stats"
-          rows={4}
-          placeholder="HOW DO YOU PLAY?"
-          className={`${inputClass} resize-none uppercase`}
-        />
+        <textarea id="app-experience" name="experience" rows={4} className={`${inputClass} resize-none`} />
       </div>
       {status === "error" ? (
         <p role="alert" className="text-sm text-red-600">
@@ -118,9 +104,9 @@ export default function CareerApplicationForm({ roles }: CareerApplicationFormPr
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full bg-primary py-6 font-display text-headline-md uppercase text-on-primary transition-all hover:bg-primary-container disabled:opacity-60"
+        className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-paper transition hover:opacity-90 disabled:opacity-60"
       >
-        {status === "submitting" ? "Submitting…" : "Submit Application"}
+        {status === "submitting" ? "Submitting…" : "Submit application"}
       </button>
     </form>
   );

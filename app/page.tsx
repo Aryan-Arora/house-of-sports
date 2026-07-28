@@ -2,21 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 import SportCycler from "@/components/SportCycler";
 import StatCounter from "@/components/StatCounter";
+import { ArrowRightIcon } from "@/components/icons";
 import siteStats from "@/content/site-stats.json";
+import sports from "@/content/sports.json";
+import arena from "@/content/arena.json";
 import eventsData from "@/content/events.json";
-import socials from "@/content/socials.json";
 import type { SiteEvent } from "@/lib/types";
 
 const events = eventsData as SiteEvent[];
-
-const STAT_STYLES = [
-  { bg: "bg-brand-mint", rotate: "rotate-2" },
-  { bg: "bg-brand-lavender", rotate: "-rotate-2" },
-  { bg: "bg-brand-coral", rotate: "rotate-3" },
-  { bg: "bg-brand-sky", rotate: "-rotate-1" },
-];
-
-const featuredEvent: SiteEvent = [...events].sort(
+const womensFootballEvent = events.find((event) => event.slug === "womens-football-league-kickoff");
+const spotlightEvent = events.find((event) => event.slug === "mini-football-world-cup") ?? events[0];
+const trueLatestEvent = [...events].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 )[0];
 
@@ -26,229 +22,267 @@ const dateFormatter = new Intl.DateTimeFormat("en-IN", {
   year: "numeric",
 });
 
+const CONNECTING_PAGES = [
+  {
+    href: "/partner-with-us",
+    label: "Partner With Us",
+    description: "Schools, brands, and venues — build the next HOS Arena with us.",
+    image: "/images/partner/cover.jpg",
+  },
+  {
+    href: "/join-the-team",
+    label: "Join the Team",
+    description: "Coaching, community, and engineering roles — open now.",
+    image: "/images/join-team/cover.jpg",
+  },
+  {
+    href: "/social-gallery",
+    label: "Social Gallery",
+    description: "Our story, our founders, and every event we've run since day one.",
+    image: "/images/gallery/cover.jpg",
+  },
+];
+
+interface SectionContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  cta: { label: string; href: string };
+}
+
+const SECTIONS: SectionContent[] = [
+  {
+    eyebrow: "Football",
+    title: "Female Football",
+    description:
+      "A program built from the ground up for women who want to play seriously — proper coaching, a real league, and a squad that shows up every week.",
+    image: womensFootballEvent?.coverImage ?? "/images/events/womens-football/cover.jpg",
+    imageAlt: "Women's football league at House of Sports",
+    cta: { label: "See the league", href: "/social-gallery" },
+  },
+  {
+    eyebrow: "Coaching",
+    title: "Coaching",
+    description:
+      "Structured sessions across football, cricket, runs, and yoga — led by coaches who care more about your next rep than your last excuse.",
+    image: "/images/coaching/cover.jpg",
+    imageAlt: "Coaching session at House of Sports",
+    cta: { label: "Meet the coaches", href: "/join-the-team" },
+  },
+  {
+    eyebrow: "Everyday",
+    title: "Pickup Matches",
+    description:
+      "No season, no commitment — just show up. Daily pickup games across all four sports, organized so you always have somewhere to play.",
+    image: "/images/pickup-matches/cover.jpg",
+    imageAlt: "Pickup football match at House of Sports",
+    cta: { label: "Find a match", href: "/partner-with-us#get-in-touch" },
+  },
+  {
+    eyebrow: "Signature event",
+    title: "Events",
+    description: spotlightEvent.description,
+    image: spotlightEvent.coverImage,
+    imageAlt: `${spotlightEvent.title} cover photo`,
+    cta: { label: "See all events", href: "/social-gallery" },
+  },
+  {
+    eyebrow: "Community",
+    title: "Community",
+    description:
+      "House of Sports was never just about the games. It's the group chat, the post-match chai, and the people who keep showing up for each other.",
+    image: "/images/community/cover.jpg",
+    imageAlt: "House of Sports community gathering",
+    cta: { label: "Meet the community", href: "/social-gallery" },
+  },
+  {
+    eyebrow: arena.partner,
+    title: arena.name,
+    description: arena.description,
+    image: arena.image,
+    imageAlt: `${arena.name} venue`,
+    cta: { label: "About the partnership", href: "/partner-with-us" },
+  },
+];
+
 export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex h-[80vh] min-h-[560px] flex-col justify-end overflow-hidden md:h-[921px]">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-background via-transparent to-transparent" />
-          <Image
-            src="/images/hero/home-hero.jpg"
-            alt="A basketball court in Delhi at twilight, lit by cobalt neon"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-            placeholder="empty"
-          />
+      <section className="relative overflow-hidden bg-paper-muted">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8 md:py-28">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+              Join the Movement
+            </p>
+            <h1 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+              Your everyday sports &amp; fitness destination
+            </h1>
+            <p className="mt-6 max-w-lg text-lg text-ink/70">
+              <SportCycler
+                words={["Football", "Cricket", "Runs", "Yoga"]}
+                className="font-semibold text-primary"
+              />{" "}
+              — coaching, events, and community, all in one place.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="/partner-with-us#get-in-touch"
+                className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-paper transition hover:opacity-90"
+              >
+                Join the Movement
+                <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/social-gallery"
+                className="inline-flex items-center gap-2 rounded-full border border-line px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-ink/30"
+              >
+                See our story
+              </Link>
+            </div>
+          </div>
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-paper md:aspect-square">
+            <Image
+              src="/images/hero/home-hero.jpg"
+              alt="House of Sports members playing football"
+              fill
+              priority
+              sizes="(min-width: 768px) 45vw, 100vw"
+              className="object-cover"
+              placeholder="empty"
+            />
+          </div>
         </div>
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-1/2 -skew-x-12 translate-x-1/4 bg-primary opacity-5" />
-        <div className="relative z-20 max-w-5xl px-4 pb-24 md:px-10">
-          <h1 className="mb-4 font-display text-[64px] uppercase leading-[0.85] tracking-tighter text-on-background md:text-[120px]">
-            DELHI&apos;S
-            <br />
-            PICKUP GAME
-          </h1>
-          <SportCycler words={["FOOTBALL", "BASKETBALL", "BADMINTON", "CRICKET"]} />
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-4 bg-primary px-8 py-4 font-display text-headline-lg uppercase text-on-primary transition-all hover:pr-12"
-          >
-            Join the next game
-            <span className="material-symbols-outlined transition-transform group-hover:translate-x-2">
-              arrow_forward
-            </span>
-          </Link>
+      </section>
+
+      {/* Sports strip */}
+      <section className="border-y border-line bg-paper">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden bg-line md:grid-cols-4">
+          {sports.map((sport) => (
+            <div key={sport.slug} className="bg-paper px-6 py-8">
+              <h3 className="text-lg font-bold text-ink">{sport.name}</h3>
+              <p className="mt-2 text-sm text-ink/60">{sport.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Connecting pages */}
+      <section className="mx-auto max-w-7xl px-5 py-20 md:px-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {CONNECTING_PAGES.map((page) => (
+            <Link
+              key={page.href}
+              href={page.href}
+              className="group block overflow-hidden rounded-2xl border border-line transition-colors hover:border-ink/20"
+            >
+              <div className="relative aspect-[16/10] w-full bg-paper-muted">
+                <Image
+                  src={page.image}
+                  alt={page.label}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  placeholder="empty"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-bold text-ink">{page.label}</h3>
+                  <ArrowRightIcon className="h-4 w-4 text-ink/40 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                </div>
+                <p className="mt-2 text-sm text-ink/60">{page.description}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
       {/* Stats strip */}
-      <section className="court-pattern relative overflow-hidden border-y-4 border-primary bg-surface-container-highest px-4 py-12 md:px-10">
-        <div className="relative z-10 flex flex-wrap items-center justify-between gap-4">
-          {siteStats.map((stat, index) => {
-            const style = STAT_STYLES[index % STAT_STYLES.length];
-            return (
-              <div key={stat.id} className="flex items-center gap-4">
-                <StatCounter
-                  stat={stat}
-                  className="font-display text-stat-number text-primary"
-                />
-                <div className={`border border-on-background/10 px-2 py-1 ${style.bg} ${style.rotate}`}>
-                  <span className="font-mono-label text-label-mono uppercase text-on-background">
-                    {stat.label}
-                  </span>
+      <section className="bg-ink py-16 text-paper">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-5 md:grid-cols-4 md:px-8">
+          {siteStats.map((stat) => (
+            <div key={stat.id} className="text-center">
+              <StatCounter stat={stat} className="text-3xl font-extrabold text-paper sm:text-4xl" />
+              <p className="mt-2 text-xs font-medium uppercase tracking-wide text-paper/50">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Six sections */}
+      {SECTIONS.map((section, index) => {
+        const reversed = index % 2 === 1;
+        return (
+          <section
+            key={section.title}
+            className={index % 2 === 0 ? "bg-paper" : "bg-paper-muted"}
+          >
+            <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+              <div
+                className={`grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16 ${
+                  reversed ? "md:[&>*:first-child]:order-2" : ""
+                }`}
+              >
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-paper">
+                  <Image
+                    src={section.image}
+                    alt={section.imageAlt}
+                    fill
+                    sizes="(min-width: 768px) 45vw, 100vw"
+                    className="object-cover"
+                    placeholder="empty"
+                  />
                 </div>
-                {index < siteStats.length - 1 ? (
-                  <div className="hidden h-12 w-[2px] bg-primary opacity-30 md:block" />
-                ) : null}
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+                    {section.eyebrow}
+                  </p>
+                  <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+                    {section.title}
+                  </h2>
+                  <p className="mt-4 max-w-md text-ink/70">{section.description}</p>
+                  <Link
+                    href={section.cta.href}
+                    className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                  >
+                    {section.cta.label}
+                    <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          </section>
+        );
+      })}
+
+      {/* Latest event note */}
+      <section className="mx-auto max-w-7xl px-5 pb-4 md:px-8">
+        <p className="text-xs text-ink/40">
+          Latest: {trueLatestEvent.title} — {dateFormatter.format(new Date(trueLatestEvent.date))}
+        </p>
       </section>
 
-      {/* What we do (bento) */}
-      <section className="bg-background px-4 py-24 md:px-10">
-        <div className="mb-16">
-          <p className="mb-2 font-mono-label text-label-mono uppercase text-primary">
-            {"// Our ecosystem"}
-          </p>
-          <h2 className="font-display text-headline-lg uppercase tracking-tighter text-on-background md:text-display-xl">
-            WHAT WE DO
+      {/* Final CTA */}
+      <section className="bg-primary py-20 text-paper">
+        <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
+          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Join the Movement
           </h2>
-        </div>
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-12">
-          <div className="group relative overflow-hidden border-2 border-outline-variant bg-surface-container p-8 shadow-sm transition-colors hover:bg-primary md:col-span-8">
-            <div className="relative z-10">
-              <div className="mb-6 inline-block border border-on-background/10 bg-brand-mint px-3 py-1">
-                <span className="font-mono-label text-label-mono uppercase text-on-background">
-                  Pickup matches
-                </span>
-              </div>
-              <h3 className="mb-4 font-display text-headline-lg uppercase text-on-background group-hover:text-on-primary">
-                DAILY RUNS ON YOUR TIME
-              </h3>
-              <p className="max-w-md text-body-lg text-on-surface-variant group-hover:text-on-primary/80">
-                No commitment. No hassle. Just high-quality games organized by experts. Show up,
-                play hard, go home.
-              </p>
-            </div>
-            <div className="absolute bottom-0 right-0 opacity-[0.05] transition-opacity group-hover:opacity-20">
-              <span className="material-symbols-outlined text-[160px] text-on-background group-hover:text-on-primary">
-                sports_soccer
-              </span>
-            </div>
-          </div>
-
-          <div className="border-2 border-outline-variant bg-surface-container p-8 shadow-sm transition-colors hover:bg-primary md:col-span-4">
-            <div className="mb-6 inline-block border border-on-background/10 bg-brand-lavender px-3 py-1">
-              <span className="font-mono-label text-label-mono uppercase text-on-background">
-                Tournaments
-              </span>
-            </div>
-            <h3 className="group mb-4 font-display text-headline-md uppercase text-on-background hover:text-on-primary">
-              BRAGGING RIGHTS
-            </h3>
-            <p className="text-body-md text-on-surface-variant">
-              Elite competition, professional refereeing, and massive prizes.
-            </p>
-          </div>
-
-          <div className="group border-2 border-outline-variant bg-surface-container p-8 shadow-sm transition-colors hover:bg-primary md:col-span-4">
-            <div className="mb-6 inline-block border border-on-background/10 bg-brand-coral px-3 py-1">
-              <span className="font-mono-label text-label-mono uppercase text-on-background">
-                Signature events
-              </span>
-            </div>
-            <h3 className="mb-4 font-display text-headline-md uppercase text-on-background group-hover:text-on-primary">
-              STREET VIBE
-            </h3>
-            <p className="text-body-md text-on-surface-variant group-hover:text-on-primary/80">
-              Experience sports like never before with music, art, and high-stakes games.
-            </p>
-          </div>
-
-          <div className="group flex flex-col justify-between gap-6 overflow-hidden border-2 border-outline-variant bg-surface-container p-8 shadow-sm transition-colors hover:bg-primary md:col-span-8 md:flex-row md:items-end">
-            <div className="relative z-10 max-w-md">
-              <div className="mb-6 inline-block border border-on-background/10 bg-brand-sky px-3 py-1">
-                <span className="font-mono-label text-label-mono uppercase text-on-background">
-                  Community
-                </span>
-              </div>
-              <h3 className="mb-4 font-display text-headline-lg uppercase text-on-background group-hover:text-on-primary">
-                MORE THAN PLAYERS
-              </h3>
-              <p className="text-body-lg text-on-surface-variant group-hover:text-on-primary/80">
-                Join the Discord, connect with athletes across the city, and build your own
-                squad.
-              </p>
-            </div>
-            <div className="font-display text-[80px] leading-none text-primary opacity-10 group-hover:text-on-primary group-hover:opacity-40">
-              SQUAD
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured event */}
-      <section className="relative bg-background p-4 md:p-10">
-        <div className="grid grid-cols-1 border-4 border-primary lg:grid-cols-2">
-          <div className="relative h-96 overflow-hidden lg:h-auto">
-            <Image
-              src={featuredEvent.coverImage}
-              alt={`${featuredEvent.title} cover photo`}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-              placeholder="empty"
-            />
-            <div className="absolute left-8 top-8 bg-primary px-4 py-2 font-mono-label text-label-mono font-bold uppercase text-on-primary">
-              Featured Event
-            </div>
-          </div>
-          <div className="flex flex-col justify-center bg-surface-container p-8 md:p-16">
-            <div className="mb-6 flex items-center gap-4">
-              <span className="border border-primary px-3 py-1 font-mono-label text-label-mono uppercase text-primary">
-                {featuredEvent.tag}
-              </span>
-              <span className="font-mono-label text-label-mono uppercase text-on-surface-variant">
-                {dateFormatter.format(new Date(featuredEvent.date))}
-              </span>
-            </div>
-            <h2 className="mb-8 font-display text-headline-lg uppercase leading-tight text-on-background md:text-[80px]">
-              {featuredEvent.title}
-            </h2>
-            <p className="mb-10 max-w-lg text-body-lg text-on-surface-variant">
-              {featuredEvent.description}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/history"
-                className="bg-primary px-10 py-4 font-display uppercase text-on-primary transition-all hover:bg-on-background"
-              >
-                See full gallery
-              </Link>
-              <Link
-                href="/contact"
-                className="border-2 border-on-background px-10 py-4 font-display uppercase text-on-background transition-all hover:bg-on-background hover:text-on-primary"
-              >
-                Get in touch
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Community CTA */}
-      <section className="court-pattern relative overflow-hidden bg-primary py-32 text-on-primary">
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center md:px-10">
-          <h2 className="mb-8 font-display text-headline-lg uppercase leading-none md:text-[100px]">
-            DON&apos;T SIT ON THE SIDELINE
-          </h2>
-          <p className="mb-12 text-2xl font-bold uppercase italic">
-            Level up your game with Delhi&apos;s elite pickup community.
+          <p className="mx-auto mt-4 max-w-xl text-paper/80">
+            Football, cricket, runs, or yoga — there&rsquo;s a session with your name on it.
+            Reach out and we&rsquo;ll get you started.
           </p>
-          <div className="flex flex-col justify-center gap-6 md:flex-row">
-            <div className="rotate-1 border-2 border-on-primary bg-on-primary p-1 text-primary transition-transform hover:rotate-0">
-              <a
-                href={socials.links.find((link) => link.platform === "Discord")?.url ?? "#"}
-                target="_blank"
-                rel="noreferrer"
-                className="block w-full bg-primary px-12 py-6 text-center font-display text-headline-md uppercase text-on-primary"
-              >
-                Join Discord
-              </a>
-            </div>
-            <div className="-rotate-1 border-2 border-on-primary bg-primary p-1 text-on-primary transition-transform hover:rotate-0">
-              <Link
-                href="/contact"
-                className="block w-full border-2 border-on-primary bg-transparent px-12 py-6 text-center font-display text-headline-md uppercase text-on-primary"
-              >
-                Book a court
-              </Link>
-            </div>
-          </div>
+          <Link
+            href="/partner-with-us#get-in-touch"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-paper px-8 py-3.5 text-sm font-semibold text-primary transition hover:opacity-90"
+          >
+            Get in touch
+          </Link>
         </div>
       </section>
     </>

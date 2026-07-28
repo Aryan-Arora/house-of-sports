@@ -7,12 +7,12 @@ interface EventCardProps {
   className?: string;
 }
 
-/** Gallery tile used on the History/Gallery masonry grid. */
+/** Gallery tile used on the Social Gallery masonry grid. */
 export default function EventCard({ event, className }: EventCardProps) {
   return (
     <div
       className={clsx(
-        "group relative h-full overflow-hidden border-2 border-outline-variant bg-surface transition-all hover:border-primary",
+        "group relative h-full overflow-hidden rounded-2xl bg-paper-muted",
         className
       )}
     >
@@ -21,16 +21,14 @@ export default function EventCard({ event, className }: EventCardProps) {
         alt={`${event.title} cover photo`}
         fill
         sizes="(min-width: 768px) 33vw, 100vw"
-        className="object-cover transition-transform duration-500 group-hover:scale-110"
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
         placeholder="empty"
       />
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100">
-        <span className="mb-2 inline-block bg-primary px-2 py-1 font-mono-label text-label-mono text-on-primary">
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent p-4 pt-12">
+        <span className="text-[11px] font-semibold uppercase tracking-wide text-paper/70">
           {event.tag}
         </span>
-        <h3 className="font-display text-headline-md uppercase text-on-background">
-          {event.title}
-        </h3>
+        <h3 className="mt-1 text-base font-bold text-paper">{event.title}</h3>
       </div>
     </div>
   );
