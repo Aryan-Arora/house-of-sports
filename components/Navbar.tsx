@@ -28,7 +28,7 @@ export default function Navbar() {
           House of Sports
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-3 md:flex">
           {NAV_LINKS.slice(1).map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -37,8 +37,10 @@ export default function Navbar() {
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 className={clsx(
-                  "text-sm font-medium transition-colors",
-                  isActive ? "text-primary" : "text-ink/70 hover:text-ink"
+                  "rounded-full border px-4 py-2 text-sm font-semibold transition-colors",
+                  isActive
+                    ? "border-primary bg-primary/10 text-primary"
+                    : "border-line text-ink/70 hover:border-ink/30 hover:text-ink"
                 )}
               >
                 {link.label}
