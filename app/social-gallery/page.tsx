@@ -2,41 +2,23 @@ import type { Metadata } from "next";
 import FounderCard from "@/components/FounderCard";
 import GalleryFilter from "@/components/GalleryFilter";
 import SocialsGrid from "@/components/SocialsGrid";
+import HistoryTimeline from "@/components/HistoryTimeline";
 import foundersData from "@/content/founders.json";
 import eventsData from "@/content/events.json";
 import socials from "@/content/socials.json";
-import type { Founder, SiteEvent, SocialPost } from "@/lib/types";
+import milestonesData from "@/content/milestones.json";
+import type { Founder, Milestone, SiteEvent, SocialPost } from "@/lib/types";
 
 const founders = foundersData as Founder[];
 const events = eventsData as SiteEvent[];
 const posts = socials.posts as SocialPost[];
+const milestones = milestonesData as Milestone[];
 
 export const metadata: Metadata = {
   title: "Social Gallery",
   description:
     "Our founders, our history, and every House of Sports event since day one — plus what the community's been posting.",
 };
-
-const MILESTONES = [
-  {
-    year: "2021",
-    title: "Where it started",
-    description:
-      "House of Sports began with informal pickup football games around Delhi — no venue, no budget, just people who wanted to play.",
-  },
-  {
-    year: "2023",
-    title: "Coaching begins",
-    description:
-      "Structured coaching sessions and our first community events — cricket, runs, and yoga joined football on the calendar.",
-  },
-  {
-    year: "2025",
-    title: "HOS Arena opens",
-    description:
-      "We partnered with Holy Innocent Public School to open HOS Arena — our first dedicated home ground.",
-  },
-];
 
 export default function SocialGalleryPage() {
   return (
@@ -70,23 +52,11 @@ export default function SocialGalleryPage() {
 
       {/* History / milestones */}
       <section className="bg-paper-muted">
-        <div className="mx-auto max-w-4xl px-5 py-16 md:px-8 md:py-20">
-          <h2 className="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
+        <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
+          <h2 className="mb-12 text-center text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
             Our history
           </h2>
-          <div className="mt-10 space-y-10">
-            {MILESTONES.map((milestone) => (
-              <div key={milestone.year} className="flex gap-6">
-                <span className="w-16 shrink-0 text-lg font-extrabold text-primary">
-                  {milestone.year}
-                </span>
-                <div>
-                  <h3 className="text-base font-bold text-ink">{milestone.title}</h3>
-                  <p className="mt-1 text-sm text-ink/60">{milestone.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <HistoryTimeline milestones={milestones} />
         </div>
       </section>
 

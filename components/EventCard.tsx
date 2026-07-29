@@ -7,8 +7,12 @@ interface EventCardProps {
   className?: string;
 }
 
+const MONTH_ABBR = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
 /** Gallery tile used on the Social Gallery masonry grid. */
 export default function EventCard({ event, className }: EventCardProps) {
+  const eventDate = new Date(event.date);
+
   return (
     <div
       className={clsx(
@@ -24,6 +28,17 @@ export default function EventCard({ event, className }: EventCardProps) {
         className="object-cover transition-transform duration-500 group-hover:scale-105"
         placeholder="empty"
       />
+
+      {/* Date-block badge — ClayGrounds-style */}
+      <div className="absolute left-4 top-4 flex w-12 flex-col items-center overflow-hidden rounded-lg bg-paper shadow-sm">
+        <span className="w-full bg-primary py-0.5 text-center text-[10px] font-bold uppercase tracking-wide text-paper">
+          {MONTH_ABBR[eventDate.getMonth()]}
+        </span>
+        <span className="py-1 text-lg font-extrabold leading-none text-ink">
+          {eventDate.getDate()}
+        </span>
+      </div>
+
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent p-4 pt-12">
         <span className="text-[11px] font-semibold uppercase tracking-wide text-paper/70">
           {event.tag}

@@ -49,6 +49,7 @@ interface SectionContent {
   description: string;
   image: string;
   imageAlt: string;
+  stat: string;
   cta: { label: string; href: string };
 }
 
@@ -60,6 +61,7 @@ const SECTIONS: SectionContent[] = [
       "A program built from the ground up for women who want to play seriously — proper coaching, a real league, and a squad that shows up every week.",
     image: womensFootballEvent?.coverImage ?? "/images/events/womens-football/cover.jpg",
     imageAlt: "Women's football league at House of Sports",
+    stat: "WOMEN'S LEAGUE",
     cta: { label: "See the league", href: "/social-gallery" },
   },
   {
@@ -69,6 +71,7 @@ const SECTIONS: SectionContent[] = [
       "Structured sessions across football, cricket, runs, and yoga — led by coaches who care more about your next rep than your last excuse.",
     image: "/images/coaching/cover.jpg",
     imageAlt: "Coaching session at House of Sports",
+    stat: "AGES 5-45",
     cta: { label: "Meet the coaches", href: "/join-the-team" },
   },
   {
@@ -78,6 +81,7 @@ const SECTIONS: SectionContent[] = [
       "No season, no commitment — just show up. Daily pickup games across all four sports, organized so you always have somewhere to play.",
     image: "/images/pickup-matches/cover.jpg",
     imageAlt: "Pickup football match at House of Sports",
+    stat: "DAILY SLOTS",
     cta: { label: "Find a match", href: "/partner-with-us#get-in-touch" },
   },
   {
@@ -86,6 +90,7 @@ const SECTIONS: SectionContent[] = [
     description: spotlightEvent.description,
     image: spotlightEvent.coverImage,
     imageAlt: `${spotlightEvent.title} cover photo`,
+    stat: "ON CALENDAR",
     cta: { label: "See all events", href: "/social-gallery" },
   },
   {
@@ -95,6 +100,7 @@ const SECTIONS: SectionContent[] = [
       "House of Sports was never just about the games. It's the group chat, the post-match chai, and the people who keep showing up for each other.",
     image: "/images/community/cover.jpg",
     imageAlt: "House of Sports community gathering",
+    stat: "1000+ MEMBERS",
     cta: { label: "Meet the community", href: "/social-gallery" },
   },
   {
@@ -103,6 +109,7 @@ const SECTIONS: SectionContent[] = [
     description: arena.description,
     image: arena.image,
     imageAlt: `${arena.name} venue`,
+    stat: "OUR OWN GROUND",
     cta: { label: "About the partnership", href: "/partner-with-us" },
   },
 ];
@@ -241,20 +248,30 @@ export default function HomePage() {
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-wide text-primary">
-                    {section.eyebrow}
-                  </p>
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-sm font-extrabold text-primary/40">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+                      {section.eyebrow}
+                    </p>
+                  </div>
                   <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
                     {section.title}
                   </h2>
                   <p className="mt-4 max-w-md text-ink/70">{section.description}</p>
-                  <Link
-                    href={section.cta.href}
-                    className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-                  >
-                    {section.cta.label}
-                    <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                  <div className="mt-6 flex flex-wrap items-center gap-4">
+                    <span className="rounded-full border border-line px-3 py-1 text-xs font-semibold uppercase tracking-wide text-ink/60">
+                      {section.stat}
+                    </span>
+                    <Link
+                      href={section.cta.href}
+                      className="group inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                    >
+                      {section.cta.label}
+                      <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

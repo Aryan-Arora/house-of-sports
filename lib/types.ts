@@ -1,6 +1,13 @@
 export type EventCategory = "football" | "cricket" | "runs" | "yoga" | "community";
 export type GalleryItemSize = "tall" | "normal" | "short" | "diagonal";
 
+export interface Milestone {
+  period: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
 export interface SiteEvent {
   slug: string;
   title: string;
