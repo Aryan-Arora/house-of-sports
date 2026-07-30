@@ -2,12 +2,11 @@
 
 import { useState, type FormEvent } from "react";
 import { clsx } from "clsx";
+import { CheckCircleIcon } from "@/components/icons";
 
 interface ContactFormProps {
-  /** Pre-fills the subject, e.g. from a Careers "Apply" link. */
-  defaultSubject?: string;
-  /** "application" | "general" — passed through to the API route. */
-  defaultType?: string;
+  subject?: string;
+  type?: string;
 }
 
 interface FormValues {
@@ -37,9 +36,9 @@ function validate(values: FormValues): FormErrors {
 
 const initialValues: FormValues = { name: "", email: "", phone: "", message: "" };
 const inputClass =
-  "border-0 border-b-2 border-outline-variant bg-transparent py-2 font-display text-headline-md uppercase text-on-surface transition-all placeholder:text-outline-variant focus:border-primary focus:outline-none focus:ring-0";
+  "mt-1.5 w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-primary";
 
-export default function ContactForm({ defaultSubject, defaultType }: ContactFormProps) {
+export default function ContactForm({ subject, type }: ContactFormProps) {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -61,8 +60,8 @@ export default function ContactForm({ defaultSubject, defaultType }: ContactForm
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...values,
-          subject: defaultSubject ?? "General enquiry",
-          type: defaultType ?? "general",
+          subject: subject ?? "General enquiry",
+          type: type ?? "general",
         }),
       });
       if (!response.ok) throw new Error("Request failed");
@@ -75,130 +74,86 @@ export default function ContactForm({ defaultSubject, defaultType }: ContactForm
 
   if (status === "success") {
     return (
-      <div
-        role="status"
-        className="flex flex-col items-center justify-center bg-primary p-12 text-center text-on-primary"
-      >
-        <span
-          className="material-symbols-outlined mb-4 text-8xl"
-          style={{ fontVariationSettings: "'FILL' 1" }}
-        >
-          check_circle
-        </span>
-        <h3 className="mb-2 font-display text-headline-lg uppercase">SIGNAL RECEIVED.</h3>
-        <p className="max-w-xs font-mono-label text-label-mono uppercase">
-          We&apos;ve added you to the roster. Expect intel shortly.
-        </p>
+      <div role="status" className="rounded-2xl border border-line bg-paper-muted p-8 text-center">
+        <CheckCircleIcon className="mx-auto h-10 w-10 text-primary" />
+        <p className="mt-4 text-lg font-bold text-ink">Message sent</p>
+        <p className="mt-1 text-sm text-ink/60">We&rsquo;ll get back to you shortly.</p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-8 border-2 border-on-primary px-8 py-3 font-display text-headline-md uppercase transition-all hover:bg-on-primary hover:text-primary"
+          className="mt-6 text-sm font-semibold text-primary hover:underline"
         >
-          Back to base
+          Send another message
         </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-8">
-      {defaultSubject ? (
-        <div className="inline-block -rotate-2 bg-primary px-3 py-1 font-mono-label text-label-mono text-on-primary">
-          {defaultSubject}
-        </div>
-      ) : null}
-
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="font-mono-label text-label-mono uppercase text-on-surface-variant">
-            Full Player Name
+    <form onSubmit={handleSubmit} noValidate className="space-y-5">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="name" className="text-sm font-medium text-ink">
+            Name
           </label>
           <input
             id="name"
             name="name"
             type="text"
-            placeholder="RAHUL KHANNA"
             value={values.name}
             onChange={(event) => handleChange("name", event.target.value)}
             aria-invalid={Boolean(errors.name)}
-            aria-describedby={errors.name ? "name-error" : undefined}
             className={inputClass}
           />
-          {errors.name ? (
-            <p id="name-error" className="text-xs text-red-600">
-              {errors.name}
-            </p>
-          ) : null}
+          {errors.name ? <p className="mt-1.5 text-xs text-red-600">{errors.name}</p> : null}
         </div>
-
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="font-mono-label text-label-mono uppercase text-on-surface-variant">
-            Secure Email
+        <div>
+          <label htmlFor="email" className="text-sm font-medium text-ink">
+            Email
           </label>
           <input
             id="email"
             name="email"
             type="email"
-            placeholder="PLAYER@DOM.AIN"
             value={values.email}
             onChange={(event) => handleChange("email", event.target.value)}
             aria-invalid={Boolean(errors.email)}
-            aria-describedby={errors.email ? "email-error" : undefined}
             className={inputClass}
           />
-          {errors.email ? (
-            <p id="email-error" className="text-xs text-red-600">
-              {errors.email}
-            </p>
-          ) : null}
+          {errors.email ? <p className="mt-1.5 text-xs text-red-600">{errors.email}</p> : null}
         </div>
       </div>
 
-      <div className="flex flex-col gap-2 md:w-1/2 md:pr-4">
-        <label htmlFor="phone" className="font-mono-label text-label-mono uppercase text-on-surface-variant">
-          Mobile Link (optional)
+      <div>
+        <label htmlFor="phone" className="text-sm font-medium text-ink">
+          Phone (optional)
         </label>
         <input
           id="phone"
           name="phone"
           type="tel"
-          placeholder="+91 00000 00000"
           value={values.phone}
           onChange={(event) => handleChange("phone", event.target.value)}
           aria-invalid={Boolean(errors.phone)}
-          aria-describedby={errors.phone ? "phone-error" : undefined}
-          className={inputClass}
+          className={clsx(inputClass, "sm:w-1/2")}
         />
-        {errors.phone ? (
-          <p id="phone-error" className="text-xs text-red-600">
-            {errors.phone}
-          </p>
-        ) : null}
+        {errors.phone ? <p className="mt-1.5 text-xs text-red-600">{errors.phone}</p> : null}
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="message" className="font-mono-label text-label-mono uppercase text-on-surface-variant">
-          Intel / Inquiry
+      <div>
+        <label htmlFor="message" className="text-sm font-medium text-ink">
+          Message
         </label>
         <textarea
           id="message"
           name="message"
-          rows={4}
-          placeholder="I'M LOOKING TO CHALLENGE THE ELITE..."
+          rows={5}
           value={values.message}
           onChange={(event) => handleChange("message", event.target.value)}
           aria-invalid={Boolean(errors.message)}
-          aria-describedby={errors.message ? "message-error" : undefined}
-          className={clsx(
-            "resize-none border-2 border-outline-variant bg-transparent p-4 uppercase text-on-surface transition-all placeholder:text-outline-variant focus:border-primary focus:outline-none",
-            errors.message && "border-red-600"
-          )}
+          className={clsx(inputClass, "resize-none")}
         />
-        {errors.message ? (
-          <p id="message-error" className="text-xs text-red-600">
-            {errors.message}
-          </p>
-        ) : null}
+        {errors.message ? <p className="mt-1.5 text-xs text-red-600">{errors.message}</p> : null}
       </div>
 
       {status === "error" ? (
@@ -210,10 +165,9 @@ export default function ContactForm({ defaultSubject, defaultType }: ContactForm
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="flex w-full items-center justify-center gap-4 bg-primary py-6 font-display text-headline-lg uppercase text-on-primary transition-all hover:bg-primary-container active:scale-95 disabled:opacity-60"
+        className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-paper transition hover:opacity-90 disabled:opacity-60"
       >
-        {status === "submitting" ? "Sending…" : "Send the signal"}
-        <span className="material-symbols-outlined text-4xl">send</span>
+        {status === "submitting" ? "Sending…" : "Send message"}
       </button>
     </form>
   );

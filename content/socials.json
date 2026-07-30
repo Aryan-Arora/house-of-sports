@@ -1,18 +1,18 @@
 {
-  "handle": "@houseofsports_in",
-  "hashtag": "#HOSDELHI",
+  "handle": "@houseofsports.in",
+  "hashtag": "#JoinTheMovement",
   "links": [
-    { "platform": "Instagram", "url": "https://instagram.com/houseofsports_in", "icon": "camera" },
-    { "platform": "Discord", "url": "https://discord.gg/houseofsports", "icon": "forum" },
-    { "platform": "Twitter", "url": "https://twitter.com/houseofsports_in", "icon": "chat" }
+    { "platform": "Instagram", "url": "https://instagram.com/houseofsports.in", "icon": "instagram" },
+    { "platform": "YouTube", "url": "https://youtube.com/@houseofsports", "icon": "youtube" },
+    { "platform": "WhatsApp Community", "url": "https://chat.whatsapp.com/placeholder-invite-link", "icon": "mail" }
   ],
-  "stat": { "label": "Engagements this week", "value": "1.2M+" },
+  "stat": { "label": "Members reached this month", "value": "12K+" },
   "posts": [
     {
       "id": "post-1",
-      "handle": "@vikram_hoops",
-      "meta": "Sector 5 Courts • 2h ago",
-      "caption": "Raining buckets under the neon.",
+      "handle": "@priya.plays",
+      "meta": "HOS Arena • 2h ago",
+      "caption": "First training session on our own turf. Surreal.",
       "image": "/images/socials/post-1.jpg",
       "avatar": "/images/socials/avatar-1.jpg",
       "size": "featured"
@@ -20,28 +20,28 @@
     {
       "id": "post-2",
       "handle": "reel",
-      "caption": "Skaters performing a trick",
+      "caption": "Sunrise yoga session recap",
       "image": "/images/socials/post-2.jpg",
       "size": "video"
     },
     {
       "id": "post-3",
-      "handle": "@kicks_king",
-      "caption": "Close-up of basketball sneakers",
+      "handle": "@runclub_hos",
+      "caption": "Saturday 6am run club, City Park loop",
       "image": "/images/socials/post-3.jpg",
       "size": "normal"
     },
     {
       "id": "post-4",
-      "handle": "@night_football",
-      "caption": "Night football match",
+      "handle": "@cricket_hos",
+      "caption": "Weekend cricket league, quarterfinals",
       "image": "/images/socials/post-4.jpg",
       "size": "normal"
     },
     {
       "id": "post-5",
-      "handle": "@train_hard",
-      "caption": "Female athlete training",
+      "handle": "@womens_football_hos",
+      "caption": "Women's football program, week three",
       "image": "/images/socials/post-5.jpg",
       "size": "normal"
     }
