@@ -1,44 +1,58 @@
 [
   {
-    "slug": "head-coach-womens-football",
-    "title": "Head Coach — Women's Football",
+    "slug": "lead-football-coach",
+    "title": "Lead Football Coach",
     "department": "Coaching",
     "type": "Full-time",
-    "location": "HOS Arena, Delhi",
-    "compRange": "₹6L - 9L",
-    "description": "Lead our women's football program from the ground up — running sessions, building a proper training structure, and growing the squad as we move more of it onto HOS Arena.",
+    "location": "New Delhi",
+    "compRange": "₹6.0L - ₹8.0L",
+    "description": "Oversee youth development programs and mentor junior coaching staff.",
     "requirements": [
       "AIFF C-license or equivalent coaching certification",
-      "Experience coaching youth or women's teams",
-      "Comfortable running sessions solo and building a curriculum from scratch"
+      "Experience coaching youth teams",
+      "Comfortable mentoring junior coaches"
     ]
   },
   {
-    "slug": "community-events-manager",
-    "title": "Community & Events Manager",
+    "slug": "community-manager",
+    "title": "Community Manager",
     "department": "Community",
     "type": "Full-time",
-    "location": "Delhi",
-    "compRange": "₹5L - 8L",
-    "description": "Own the calendar — tournaments, community runs, yoga sessions, and everything happening at HOS Arena. You're the reason members always know what's next.",
+    "location": "Mumbai",
+    "compRange": "₹5.5L - ₹7.5L",
+    "description": "Build and engage local sports clusters to foster long-term player loyalty.",
     "requirements": [
       "2+ years running events or community programs",
-      "Strong local network in Delhi's sports and fitness scene",
+      "Strong local network in the city's sports and fitness scene",
       "Genuinely enjoys being at every event, not just organizing it"
     ]
   },
   {
-    "slug": "fullstack-developer",
-    "title": "Full-Stack Developer",
+    "slug": "frontend-engineer",
+    "title": "Frontend Engineer",
     "department": "Engineering",
     "type": "Full-time",
-    "location": "Delhi / Remote",
-    "compRange": "₹12L - 18L",
-    "description": "Build and maintain the booking, coaching, and community tools that keep House of Sports running — including everything tied to HOS Arena's day-to-day operations.",
+    "location": "Remote",
+    "compRange": "₹12L - ₹18L",
+    "description": "Build the future of grassroots sports tech using modern web frameworks.",
     "requirements": [
-      "3+ Years in Next.js / Node.js",
-      "Comfortable owning a feature end to end, from database to UI",
+      "3+ years in React / Next.js",
+      "Comfortable owning a feature end to end, from API to UI",
       "Bonus: you actually play one of our four sports"
+    ]
+  },
+  {
+    "slug": "sports-volunteer",
+    "title": "Sports Volunteer",
+    "department": "Volunteer",
+    "type": "Volunteer",
+    "location": "Delhi NCR",
+    "compRange": "Honorarium provided",
+    "description": "Support local tournament operations and game-day logistics.",
+    "requirements": [
+      "Available on weekends during tournament season",
+      "Comfortable on your feet coordinating logistics",
+      "No prior experience required — just show up ready to help"
     ]
   }
 ]
